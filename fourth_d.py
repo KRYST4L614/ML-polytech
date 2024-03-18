@@ -1,10 +1,7 @@
+import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 from sklearn import svm
 from sklearn.inspection import DecisionBoundaryDisplay
-import matplotlib.pyplot as plt
-from first import make_graph
-from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 
 if __name__ == "__main__":
     svmdata = pd.read_csv("svmdata_d.txt", delimiter='\t')
@@ -22,6 +19,7 @@ if __name__ == "__main__":
         svm.SVC(kernel="poly", degree=4, gamma="auto", C=C),
         svm.SVC(kernel="poly", degree=5, gamma="auto", C=C),
     )
+    count = 1
     for model in models:
         clf = model.fit(X, y)
 
@@ -42,5 +40,6 @@ if __name__ == "__main__":
         ax.scatter(X0, X1, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors="k")
         ax.set_xticks(())
         ax.set_yticks(())
-        ax.set_title(model.kernel)
+        ax.set_title(f"{model.kernel} degree={count}")
+        count+=1
         plt.show()

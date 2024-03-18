@@ -1,8 +1,9 @@
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
 import numpy as np
 import pandas as pd
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
 from first import make_graph
 
 GLASS_DATA = "glass.csv"
@@ -17,7 +18,7 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
     errors = []
-    neighbors = np.arange(1, 100)
+    neighbors = np.arange(3, 100)
 
     for neighbor in neighbors:
         kn_clf = KNeighborsClassifier(n_neighbors=neighbor)

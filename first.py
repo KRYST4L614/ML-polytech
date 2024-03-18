@@ -1,13 +1,15 @@
+import matplotlib.pyplot as plt
 import numpy
 import pandas
-from sklearn.naive_bayes import CategoricalNB, GaussianNB
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import CategoricalNB, GaussianNB
 
+TIC_TAC_TOE_Label = "Tic Tac Toe"
+SPAM_LABEL = "Spam"
 TIC_TAC_TOE = "tic_tac_toe.txt"
 SPAM = "spam.csv"
-PLT_X_LABEL = "Train proportion"
+PLT_X_LABEL = "Train"
 PLT_Y_LABEL = "Accuracy"
 
 
@@ -39,10 +41,10 @@ if __name__ == '__main__':
     X_tic_tac = dummies_tic_tac.values
     y_tic_tac = data_tic_tac.iloc[:, -1]
     tic_tac_toe_ratios, tic_tac_toe_test_accuracy = calculate_accuracy(X_tic_tac, y_tic_tac, CategoricalNB())
-    make_graph(tic_tac_toe_ratios, tic_tac_toe_test_accuracy, PLT_X_LABEL, PLT_Y_LABEL, TIC_TAC_TOE).show()
+    make_graph(tic_tac_toe_ratios, tic_tac_toe_test_accuracy, PLT_X_LABEL, PLT_Y_LABEL, TIC_TAC_TOE_Label).show()
 
     data_spam = pandas.read_csv(SPAM)
     X_spam = data_spam.iloc[:, :-1]
     y_spam = data_spam.iloc[:, -1]
     spam_ratios, spam_accuracy = calculate_accuracy(X_spam, y_spam, GaussianNB())
-    make_graph(spam_ratios, spam_accuracy, PLT_X_LABEL, PLT_Y_LABEL, SPAM).show()
+    make_graph(spam_ratios, spam_accuracy, PLT_X_LABEL, PLT_Y_LABEL, SPAM_LABEL).show()

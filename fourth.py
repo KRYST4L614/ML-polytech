@@ -1,9 +1,7 @@
+import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 from sklearn import svm
 from sklearn.inspection import DecisionBoundaryDisplay
-import matplotlib.pyplot as plt
-from first import make_graph
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 
 if __name__ == "__main__":
